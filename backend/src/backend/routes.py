@@ -18,7 +18,7 @@ def create_todo(todo_in:TodoCreate, session:SessionDep):
 def list_todos(session:SessionDep):
     return session.exec(select(Todo)).all()
 
-@router.get("/{todo+id}",response_model=TodoRead)
+@router.get("/{todo_id}",response_model=TodoRead)
 def get_todo(todo_id:int, session:SessionDep):
     todo = session.get(Todo, todo_id)
     if todo is None:
